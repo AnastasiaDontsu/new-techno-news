@@ -1,67 +1,79 @@
 import React, { useState } from "react";
-import { TextField, FormControl, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-
+//for form
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    setEmailError(false);
-    setPasswordError(false);
-
-    if (email == "") {
-      setEmailError(true);
-    }
-    if (password == "") {
-      setPasswordError(true);
-    }
-
-    if (email && password) {
-      console.log(email, password);
-    }
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
-    <React.Fragment>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <h2>Login Form</h2>
-        <TextField
-          label="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          variant="outlined"
-          color="secondary"
-          type="email"
-          sx={{ mb: 3 }}
-          fullWidth
-          value={email}
-          error={emailError}
-        />
-        <TextField
-          label="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          variant="outlined"
-          color="secondary"
-          type="password"
-          value={password}
-          error={passwordError}
-          fullWidth
-          sx={{ mb: 3 }}
-        />
-        <Button variant="outlined" color="secondary" type="submit">
-          Login
-        </Button>
-      </form>
-      <small>
-        Need an account? <Link to="/">Register here</Link>
-      </small>
-    </React.Fragment>
+    <>
+      <Card sx={{ maxWidth: 600 }}>
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }}>Word of the Day</Typography>
+          <form>
+            <Grid container spacing={3}>
+              <Grid xs={8} sm={6} item>
+                <TextField
+                  id="outlined-basic"
+                  label="Name"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid xs={8} sm={6} item>
+                <TextField
+                  id="outlined-basic"
+                  label="Last name"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid xs={8} sm={6} item>
+                <TextField
+                  id="outlined-basic"
+                  label="Email"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid xs={8} sm={6} item>
+                <TextField
+                  id="outlined-adornment-password"
+                  type={showPassword ? "text" : "password"}
+                  label="Password"
+                  variant="outlined"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </form>
+        </CardContent>
+      </Card>
+    </>
   );
 };
 
