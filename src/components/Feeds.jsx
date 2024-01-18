@@ -1,37 +1,77 @@
-import {
-  Container,
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import Chart from "Pages/Chart";
+import { Container, Stack } from "@mui/system";
 
 export default function Feeds() {
   return (
-    <>
-      <Box component="main" sx={{ flexGrow: 1, p: 4 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <Chart />
+    <Container
+      maxWidth="xl"
+      sx={{
+        bgcolor: "#e0e0e0",
+        height: "100vh",
+      }}
+    >
+      <Box display={"flex"}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Grid container spacing={4}>
+            <Grid item xs={8}>
+              <Stack spacing={4} direction="row">
+                <Card sx={{ minWidth: "48%", height: 130 }}>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      300
+                    </Typography>
+                  </CardContent>
+                </Card>
+                <Card sx={{ minWidth: "48%", height: 130 }}>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      300
+                    </Typography>
+                  </CardContent>
+                </Card>
+                <Card sx={{ minWidth: "48%", height: 130 }}>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      300
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Stack>
+            </Grid>
+            <Grid item xs={8}>
+              <Card sx={{ height: "40vh" }}>
+                <CardContent>
+                  <Chart />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Stack spacing={2}>
+                <Card sx={{ height: "40vh" }}>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Lizard
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Stack>
+            </Grid>
+            <Grid item xs={12}>
+              <Stack spacing={2}>
+                <Card sx={{ minWidth: "48%", height: 200 }}>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Lizard
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Stack>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Lizard
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+        </Box>
       </Box>
-    </>
+    </Container>
   );
 }
