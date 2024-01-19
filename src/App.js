@@ -5,6 +5,7 @@ import Home from "components/Home";
 import Singup from "components/Singup";
 import Singin from "components/Singin";
 import Footer from "components/Footer";
+import Feeds from "components/Feeds";
 import User from "components/User";
 import Post from "components/Post";
 
@@ -14,10 +15,11 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/Sing-up" element={<Singup />} />
-        <Route path="/Sign-in" element={<Singin />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/Sing-in" element={<Singin />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/user" element={<User />} />
         <Route path="/post" element={<Post />} />
+        <Route path="/feeds" element={<Feeds />} />
       </Routes>
       <Footer
         title="Your Website Title"
