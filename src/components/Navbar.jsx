@@ -14,8 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Home", "Post", "User"];
-const settings = ["Sing-up", "Sign-in"];
+const pages = ["Statistics", "User", "Post"];
+const settings = ["Sing-up", "Sing-in"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
