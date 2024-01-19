@@ -21,7 +21,11 @@ export default function User() {
                   <strong>{user.first_name}</strong>
                 </p>
                 <p>{user.email}</p>
-                <img key={user.avatar} src={user.avatar} />
+                <img
+                  key={user.avatar}
+                  src={user.avatar}
+                  alt={`Avatar of ${user.first_name}`}
+                />
               </div>
             );
           })}
