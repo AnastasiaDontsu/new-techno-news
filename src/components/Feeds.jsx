@@ -1,6 +1,7 @@
 import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import Chart from "Pages/Chart";
+import PieChart from "../Pages/PieChart";
 import { Container, Stack } from "@mui/system";
 
 export default function Feeds() {
@@ -52,7 +53,7 @@ export default function Feeds() {
                 <Card sx={{ height: "40vh" }}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Lizard
+                      <PieChart />
                     </Typography>
                   </CardContent>
                 </Card>
