@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "../components/NewsCard";
-
+import { Grid } from "@mui/material";
 function Post() {
   const [news, setNews] = useState([]);
 
@@ -18,9 +18,13 @@ function Post() {
 
   return (
     <div>
-      {news.map((data) => {
-        return <NewsCard data={data} />;
-      })}
+      <Grid container spacing={2}>
+        {news.map((data, index) => (
+          <Grid item xs={3} key={index}>
+            <NewsCard data={data} />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 }
