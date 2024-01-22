@@ -8,7 +8,6 @@ import {
   TextField,
   IconButton,
   InputAdornment,
-  Stack,
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import Visibility from "@mui/icons-material/Visibility";
@@ -18,7 +17,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
+
+import Link from "@mui/material/Link";
 
 const Singup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +50,7 @@ const Singup = () => {
       <Container
         maxWidth="xl"
         sx={{
-          bgcolor: "#e0e0e0",
+          bgcolor: "#f5f5f5",
           height: "100vh",
           display: "flex",
           alignItems: "center",
@@ -198,13 +198,13 @@ const Singup = () => {
                   sx={{ textAlign: "center", marginTop: "-30px" }}
                 >
                   <Button variant="contained" color="success">
-                    Success
+                    Sing-up
                   </Button>
                 </Grid>
               </Grid>
               <Grid sx={{ textAlign: "center", padding: "15px" }} item>
-                <Link href="/Sign-in" variant="body2">
-                  {"Don't have an account? Sign in"}
+                <Link href="Sing-in" variant="body2">
+                  {"Don't have an account? Sing in"}
                 </Link>
               </Grid>
             </form>
