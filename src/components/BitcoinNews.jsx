@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NewsCard from "../components/NewsCard";
+import BitcoinCard from "../utils/BitcoinCard";
 import { Grid, Container, Typography } from "@mui/material";
 
 function BitcoinNews() {
@@ -45,7 +45,7 @@ function BitcoinNews() {
         >
           {news.map((data) => (
             <Grid item xs={12} sm={4} md={4} lg={4} key={data.url}>
-              <NewsCard data={data} />
+              <BitcoinCard data={data} />
             </Grid>
           ))}
         </Grid>
