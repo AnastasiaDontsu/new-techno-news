@@ -6,7 +6,8 @@ import Singin from "components/Singin";
 import Footer from "components/Footer";
 import User from "components/User";
 import Statistics from "components/Statistics";
-import Post from "components/Post";
+import BitcoinNews from "components/BitcoinNews";
+import AppleNews from "components/AppleNews";
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
         <Route path="/Sing-in" element={<Singin />} />
         <Route path="/user" element={<User />} />
         <Route path="/statistics" element={<Statistics />} />
-        <Route path="/post" element={<Post />} />
+        <Route path="/Bitcoin News" element={<BitcoinNews />} />
+        <Route path="/Apple news" element={<AppleNews />} />
       </Routes>
       <Footer
         title="Your Website Title"
