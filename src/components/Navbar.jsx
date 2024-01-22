@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Statistics", "User", "Bitcoin News", "Apple articles"];
+const pages = ["Statistics", "User", "Bitcoin News", "Apple news"];
 const settings = ["Sing-up", "Sing-in"];
 
 function Navbar() {
