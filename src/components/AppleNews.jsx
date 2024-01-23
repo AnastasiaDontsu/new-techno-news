@@ -41,10 +41,13 @@ function AppleNews() {
         <Grid
           container
           spacing={2}
-          style={{ padding: "10px", marginBottom: "20px" }}
+          sx={{
+            padding: { xs: 2, sm: 3 },
+            marginBottom: "20px",
+          }}
         >
           {news.map((data) => (
-            <Grid item xs={12} sm={4} md={4} lg={4} key={data.url}>
+            <Grid item xs={12} sm={6} md={4} lg={4} key={data.url}>
               <AppleCard data={data} />
             </Grid>
           ))}
