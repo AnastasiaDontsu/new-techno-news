@@ -8,12 +8,14 @@ import User from "components/User";
 import Statistics from "components/Statistics";
 import BitcoinNews from "components/BitcoinNews";
 import AppleNews from "components/AppleNews";
+import loginButton from "components/loginButton";
 
 const App = () => {
   return (
     <div>
       <Navbar />
       <Routes>
+        <Route path="/loginButton" element={<loginButton />} />
         <Route path="/Sing-up" element={<Singup />} />
         <Route path="/Sing-in" element={<Singin />} />
         <Route path="/user" element={<User />} />
