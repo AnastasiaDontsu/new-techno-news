@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   Container,
   Card,
@@ -19,8 +21,71 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Box from "@mui/material/Box";
 
 import Link from "@mui/material/Link";
+import { useNavigate } from "react-router-dom";
 
 const Singup = () => {
+  const [name, namechange] = useState("");
+  const [lastname, lastnamechange] = useState("");
+  const [email, emailchange] = useState("");
+  const [password, passwordchange] = useState("");
+  const [phone, phonechange] = useState("");
+  const IsValidate = () => {
+    let isproceed = true;
+    let errormessage = "Please enter the value in ";
+
+    if (name === null || name === "") {
+      isproceed = false;
+      errormessage += "name ";
+    }
+    if (lastname === null || lastname === "") {
+      isproceed = false;
+      errormessage += "lastname ";
+    }
+    if (email === null || email === "") {
+      isproceed = false;
+      errormessage += "email";
+    }
+    if (password === null || password === "") {
+      isproceed = false;
+      errormessage += " password";
+    }
+    if (phone === null || phone === "") {
+      isproceed = false;
+      errormessage += " phone";
+    }
+
+    if (!isproceed) {
+      toast.warning(errormessage);
+    } else {
+      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
+      } else {
+        isproceed = false;
+        toast.warning("Please enter the valid email");
+      }
+    }
+    return isproceed;
+  };
+
+  const navigate = useNavigate();
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    const showobj = { name, lastname, email, password, phone };
+    console.log(showobj);
+    if (IsValidate()) {
+      fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(showobj),
+      })
+        .then((res) => {
+          toast.success("Registration successful");
+          navigate("/Sing-in");
+        })
+        .catch((err) => {
+          toast.error("Failed: " + err.message);
+        });
+    }
+  };
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -72,10 +137,12 @@ const Singup = () => {
             >
               Registration
             </Typography>
-            <form>
+            <form onSubmit={handlesubmit}>
               <Grid container spacing={4}>
                 <Grid xs={12} md={6} item>
                   <TextField
+                    value={name}
+                    onChange={(e) => namechange(e.target.value)}
                     label="Name"
                     variant="outlined"
                     id="name"
@@ -90,9 +157,11 @@ const Singup = () => {
                 </Grid>
                 <Grid xs={12} md={6} item>
                   <TextField
+                    value={lastname}
+                    onChange={(e) => lastnamechange(e.target.value)}
                     label="Last name"
                     variant="outlined"
-                    id="last"
+                    id="lastname"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -104,6 +173,8 @@ const Singup = () => {
                 </Grid>
                 <Grid xs={12} md={6} item>
                   <TextField
+                    value={email}
+                    onChange={(e) => emailchange(e.target.value)}
                     label="Email"
                     variant="outlined"
                     id="email"
@@ -118,6 +189,8 @@ const Singup = () => {
                 </Grid>
                 <Grid xs={12} md={6} item>
                   <TextField
+                    value={password}
+                    onChange={(e) => passwordchange(e.target.value)}
                     id="password"
                     type={showPassword ? "text" : "password"}
                     label="Password"
@@ -140,6 +213,8 @@ const Singup = () => {
                 </Grid>
                 <Grid xs={12} md={6} item>
                   <TextField
+                    value={phone}
+                    onChange={(e) => phonechange(e.target.value)}
                     label="Phone"
                     variant="outlined"
                     id="phone"
@@ -197,8 +272,12 @@ const Singup = () => {
                   item
                   sx={{ textAlign: "center", marginTop: "-30px" }}
                 >
-                  <Button variant="contained" color="success">
-                    Sing-up
+                  <Button
+                    sx={{ backgroundColor: "success.main" }}
+                    type="submit"
+                    variant="contained"
+                  >
+                    Sign-up
                   </Button>
                 </Grid>
               </Grid>
