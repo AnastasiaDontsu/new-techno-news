@@ -9,17 +9,24 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
+import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function Singin() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
+  const singin = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <Container
       component="main"
@@ -76,13 +83,11 @@ export default function Singin() {
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
-              <Box
-                component="form"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 1 }}
-              >
+
+              <Box onSubmit={singin} component="form" noValidate sx={{ mt: 1 }}>
                 <TextField
+                  value={email}
+                  onChange={(e) => setemail(e.target.value)}
                   margin="normal"
                   required
                   fullWidth
@@ -93,6 +98,8 @@ export default function Singin() {
                   autoFocus
                 />
                 <TextField
+                  value={password}
+                  onChange={(e) => setpassword(e.target.value)}
                   margin="normal"
                   required
                   fullWidth
