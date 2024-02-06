@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
+  Button,
   Container,
   Card,
   CardContent,
@@ -11,7 +12,7 @@ import {
   IconButton,
   InputAdornment,
 } from "@mui/material";
-import Button from "@mui/material/Button";
+
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -19,9 +20,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Box from "@mui/material/Box";
-
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 const Singup = () => {
   const [name, namechange] = useState("");
@@ -31,7 +33,7 @@ const Singup = () => {
   const [phone, phonechange] = useState("");
   const IsValidate = () => {
     let isproceed = true;
-    let errormessage = "Please enter the value in ";
+    let errormessage = "The following values are mandatory for registering : ";
 
     if (name === null || name === "") {
       isproceed = false;
@@ -72,17 +74,17 @@ const Singup = () => {
     const showobj = { name, lastname, email, password, phone };
     console.log(showobj);
     if (IsValidate()) {
-      fetch("https://jsonplaceholder.typicode.com/users", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(showobj),
-      })
-        .then((res) => {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Handle successful sign-up here
+          console.log(userCredential);
           toast.success("Registration successful");
-          navigate("/Sing-in");
+          navigate("/About");
         })
-        .catch((err) => {
-          toast.error("Failed: " + err.message);
+        .catch((error) => {
+          // Handle sign-up errors here
+          console.log(error);
+          toast.error("Failed to register: " + error.message);
         });
     }
   };

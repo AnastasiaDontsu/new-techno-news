@@ -11,11 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
-
-const pages = ["Statistics", "User", "Bitcoin News", "Apple news"];
-const settings = ["Sing-up", "Sing-in"];
+import logo from "../Image/blog(1).png";
+const pages = ["Statistics", "User", "Bitcoin News", "Apple news", "About"];
+const settings = ["Sing-up", "Sing-in", "loginButton"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,7 +36,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#b71c1c" }}>
+    <AppBar position="static" sx={{ backgroundColor: "#d50000" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -88,25 +87,9 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          <Toolbar>
+            <img src={logo} alt="logo" style={{ width: "50px" }} />
+          </Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button

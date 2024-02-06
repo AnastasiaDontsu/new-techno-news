@@ -8,15 +8,17 @@ import User from "components/User";
 import Statistics from "components/Statistics";
 import BitcoinNews from "components/BitcoinNews";
 import AppleNews from "components/AppleNews";
-import loginButton from "components/loginButton";
+import { ToastContainer } from "react-toastify";
+import About from "components/About";
 
 const App = () => {
   return (
     <div>
+      <ToastContainer theme="colored" position="top-center"></ToastContainer>
       <Navbar />
       <Routes>
-        <Route path="/loginButton" element={<loginButton />} />
         <Route path="/Sing-up" element={<Singup />} />
+        <Route path="/About" element={<About />} />
         <Route path="/Sing-in" element={<Singin />} />
         <Route path="/user" element={<User />} />
         <Route path="/statistics" element={<Statistics />} />

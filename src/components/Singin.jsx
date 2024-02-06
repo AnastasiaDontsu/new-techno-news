@@ -1,14 +1,21 @@
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { Container } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import EmailIcon from "@mui/icons-material/Email";
+import {
+  Button,
+  Box,
+  Container,
+  Typography,
+  Grid,
+  TextField,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -21,12 +28,30 @@ export default function Singin() {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        // User successfully signed in
+        const user = userCredential.user;
+        user.getIdToken().then((token) => {
+          // Save the token to localStorage
+          localStorage.setItem("firebaseToken", token);
+          console.log("Token saved to localStorage:", token);
+        });
       })
       .catch((error) => {
-        console.log(error);
+        // Handle sign-in errors
+        console.error("Sign-in error:", error);
       });
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <Container
       component="main"
@@ -96,6 +121,13 @@ export default function Singin() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <EmailIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   value={password}
@@ -105,14 +137,29 @@ export default function Singin() {
                   fullWidth
                   name="password"
                   label="Password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   autoComplete="current-password"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
                 />
+
                 <Button
                   type="submit"
                   fullWidth
