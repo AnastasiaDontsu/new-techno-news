@@ -79,7 +79,7 @@ const Singup = () => {
           // Handle successful sign-up here
           console.log(userCredential);
           toast.success("Registration successful");
-          navigate("/About");
+          navigate("/Home");
         })
         .catch((error) => {
           // Handle sign-up errors here
