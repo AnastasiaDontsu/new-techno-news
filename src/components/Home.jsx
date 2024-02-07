@@ -1,51 +1,33 @@
 import React from "react";
-import {
-  Typography,
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Container,
-} from "@mui/material";
+import { Typography, Box, Container, styled, Stack } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "./Slider";
-export default function Home() {
-  const slides = [
-    {
-      url: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "beach",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1525540810550-5032f5d191b1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "boat",
-    },
-    {
-      url: "https://plus.unsplash.com/premium_photo-1661727547850-3d7c020a64a8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "forest",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1581087725018-45eb42ace6eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "city",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1581090016743-0791caf50d31?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "italy",
-    },
-  ];
-  const containerStyles = {
-    width: "500px",
-    height: "280px",
-    margin: "0 auto",
-  };
+import { Link } from "react-router-dom";
+const StyledLink = styled(Link)({
+  color: "black", // Set color to black
+  textDecoration: "none", // Remove underlining
+  "&:hover": {
+    textDecoration: "none", // Remove underlining on hover
+  },
+});
+const StyledBox = styled(Box)({
+  height: 300,
+  width: "100%",
+  cursor: "pointer",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center center",
+  backgroundSize: "cover",
+});
 
+const StyledTypography = styled(Typography)({
+  margin: "25% 50px 25% 50px",
+  background: "white",
+  opacity: "0.8",
+});
+
+export default function Home() {
   return (
-    <Container
-      maxWidth="xl"
-      sx={{
-        height: "100vh",
-      }}
-    >
+    <Container maxWidth="xl">
       <Box>
         <Typography align="center" variant="h2" sx={{ fontWeight: 900 }}>
           Techno<b style={{ color: "red" }}>blog</b>
@@ -83,19 +65,52 @@ export default function Home() {
             </Box>
           </Box>
         </Box>
-        <Box></Box>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <Grid container spacing={4} justifyContent="end">
-            <Grid item xs={12} sm={8} md={4}>
-              <Card sx={{ height: "35vh" }}>
-                <CardContent>
-                  <div style={containerStyles}>
-                    <Slider slides={slides} />
-                  </div>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
+        <Box>
+          <Box>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={{ xs: 1, sm: 2, md: 4 }}
+              m={6}
+            >
+              <StyledBox
+                sx={{
+                  backgroundImage: `url("https://images.unsplash.com/photo-1641580529558-a96cf6efbc72?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+                }}
+              >
+                <StyledTypography align="center" variant="h3">
+                  <StyledLink to="/Bitcoin News">Bitcoin</StyledLink>
+                </StyledTypography>
+              </StyledBox>
+              <StyledBox
+                sx={{
+                  backgroundImage: `url("https://images.unsplash.com/photo-1459550146610-232100af5511?q=80&w=2135&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+                }}
+              >
+                <StyledTypography align="center" variant="h3">
+                  <StyledLink to="/Apple news">Apple</StyledLink>
+                </StyledTypography>
+              </StyledBox>
+              <StyledBox
+                sx={{
+                  backgroundImage: `url("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+                }}
+              >
+                <StyledTypography align="center" variant="h3">
+                  <StyledLink to="/User">User</StyledLink>
+                </StyledTypography>
+              </StyledBox>
+            </Stack>
+          </Box>
+        </Box>
+        <Box>
+          <Typography
+            align="center"
+            variant="h2"
+            sx={{ fontWeight: 900 }}
+            m={6}
+          >
+            comments for <b style={{ color: "red" }}>you</b>
+          </Typography>
         </Box>
       </Box>
     </Container>
