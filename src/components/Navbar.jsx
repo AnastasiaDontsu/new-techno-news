@@ -12,8 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-import logo from "../Image/blog(1).png";
-const pages = ["Statistics", "User", "Bitcoin News", "Apple news", "About"];
+import logo from "../Image/Fauget.png";
+const pages = ["Statistics", "User", "Bitcoin News", "Apple news", "Home"];
 const settings = ["Sing-up", "Sing-in", "loginButton"];
 
 function Navbar() {
@@ -36,7 +36,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#d50000" }}>
+    <AppBar position="static" sx={{ backgroundColor: "#212121" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
