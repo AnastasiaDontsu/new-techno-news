@@ -1,8 +1,18 @@
 import React from "react";
-import { Typography, Box, Container, styled, Stack } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Container,
+  styled,
+  Stack,
+  CardContent,
+} from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import Coments from "../components/Coments";
+import { motion } from "framer-motion";
+
 const StyledLink = styled(Link)({
   color: "black", // Set color to black
   textDecoration: "none", // Remove underlining
@@ -29,9 +39,23 @@ export default function Home() {
   return (
     <Container maxWidth="xl">
       <Box>
-        <Typography align="center" variant="h2" sx={{ fontWeight: 900 }}>
-          Techno<b style={{ color: "red" }}>blog</b>
-        </Typography>
+        <motion.div
+          className="animatable"
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.3, ease: "easeInOut" }, // Add transition property
+          }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Typography
+            align="center"
+            variant="h2"
+            sx={{ fontWeight: 900 }}
+            m={2}
+          >
+            Techno<b style={{ color: "red" }}>blog</b>
+          </Typography>
+        </motion.div>
         <Box
           sx={{
             backgroundImage: `url("https://images.unsplash.com/photo-1535378620166-273708d44e4c?q=80&w=2157&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
@@ -54,13 +78,13 @@ export default function Home() {
           >
             <Box sx={{ background: "white", opacity: 0.4 }}>
               <Typography variant={"h6"} color="tomato" align="center" pt={8}>
-                Trending Styles
+                The future is in your hands
               </Typography>
               <Typography variant="h4" align="center">
-                Life is Boring without Fashion!
+                The most popular technology news!
               </Typography>
               <Typography variant="body1" align="center" pb={8}>
-                we love to change your style lorme ipsum
+                Popular and interesting
               </Typography>
             </Box>
           </Box>
@@ -81,6 +105,7 @@ export default function Home() {
                   <StyledLink to="/Bitcoin News">Bitcoin</StyledLink>
                 </StyledTypography>
               </StyledBox>
+
               <StyledBox
                 sx={{
                   backgroundImage: `url("https://images.unsplash.com/photo-1459550146610-232100af5511?q=80&w=2135&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
@@ -103,14 +128,30 @@ export default function Home() {
           </Box>
         </Box>
         <Box>
-          <Typography
-            align="center"
-            variant="h2"
-            sx={{ fontWeight: 900 }}
-            m={6}
+          <motion.div
+            className="animatable"
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 0.3, ease: "easeInOut" }, // Add transition property
+            }}
+            whileTap={{ scale: 0.9 }}
           >
-            comments for <b style={{ color: "red" }}>you</b>
-          </Typography>
+            <Typography
+              align="center"
+              variant="h2"
+              sx={{ fontWeight: 900 }}
+              m={2}
+            >
+              comments for <b style={{ color: "red" }}>you</b>
+            </Typography>
+          </motion.div>
+        </Box>
+        <Box>
+          <Stack spacing={2}>
+            <CardContent>
+              <Coments />
+            </CardContent>
+          </Stack>
         </Box>
       </Box>
     </Container>
