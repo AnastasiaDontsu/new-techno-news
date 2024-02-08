@@ -8,27 +8,24 @@ import User from "components/User";
 import Statistics from "components/Statistics";
 import BitcoinNews from "components/BitcoinNews";
 import AppleNews from "components/AppleNews";
-import { ToastContainer } from "react-toastify";
-import About from "components/About";
+import Coments from "components/Coments";
+import Home from "components/Home";
 
 const App = () => {
   return (
     <div>
-      <ToastContainer theme="colored" position="top-center"></ToastContainer>
       <Navbar />
       <Routes>
         <Route path="/Sing-up" element={<Singup />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/Sing-in" element={<Singin />} />
         <Route path="/user" element={<User />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/Bitcoin News" element={<BitcoinNews />} />
         <Route path="/Apple news" element={<AppleNews />} />
+        <Route path="/Coments" element={<Coments />} />
       </Routes>
-      <Footer
-        title="Your Website Title"
-        description="A short description of your website."
-      />
+      <Footer />
     </div>
   );
 };
