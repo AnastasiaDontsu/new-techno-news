@@ -1,49 +1,66 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import React from "react";
+import { Box, Grid, ListItemText, Typography } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { FooterCard } from "Pages/FooterCard";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
-function Copyright() {
+export default function Footer() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-function Footer(props) {
-  const { description, title } = props;
-
-  return (
-    <Box component="footer" sx={{ bgcolor: "#b71c1c", py: 3, width: "100%" }}>
-      <Container maxWidth="sm">
-        <Typography variant="h6" align="center" gutterBottom>
-          {title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          {description}
-        </Typography>
-        <Copyright />
-      </Container>
+    <Box
+      sx={{
+        backgroundColor: "black",
+        color: "white",
+        p: { xs: 4, md: 7 },
+        pt: 8,
+        pb: 8,
+        fontSize: { xs: "12px", md: "15px" },
+      }}
+    >
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item xs={12} md={8} sm={9}>
+          <FooterCard variant="body1">
+            About<b style={{ color: "red" }}>us</b>
+          </FooterCard>
+          <Typography variant="caption2">
+            Technology future interesting new products
+          </Typography>
+          <Box
+            sx={{
+              mt: 2,
+              color: "gray",
+            }}
+          >
+            <FacebookIcon sx={{ mr: 1 }} />
+            <InstagramIcon sx={{ mr: 1 }} />
+            <WhatsAppIcon sx={{ mr: 1 }} />
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6} lg={2}>
+          {" "}
+          {/* Adjusted grid sizing for smaller screens */}
+          <FooterCard variant="body1">Information</FooterCard>
+          <List>
+            <ListItemText>
+              <Typography lineHeight={2} variant="caption2">
+                About us
+              </Typography>
+            </ListItemText>
+            <ListItemText>
+              <Typography lineHeight={2} variant="caption2">
+                Privacy & Policy
+              </Typography>
+            </ListItemText>
+            <ListItemText>
+              <Typography lineHeight={2} variant="caption2">
+                Terms & Conditions
+              </Typography>
+            </ListItemText>
+          </List>
+        </Grid>
+      </Grid>
     </Box>
   );
 }
-
-Footer.propTypes = {
-  description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-export default Footer;
