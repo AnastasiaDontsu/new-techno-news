@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BitcoinCard from "../utils/BitcoinCard";
+import BitcoinCard from "Pages/BitcoinCard";
 import { Grid, Container, Typography } from "@mui/material";
 
 function BitcoinNews() {
@@ -22,7 +22,6 @@ function BitcoinNews() {
       <Container
         maxWidth="xl"
         sx={{
-          bgcolor: "#e0e0e0",
           padding: "10px",
           marginBottom: "20px",
         }}

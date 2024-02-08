@@ -57,7 +57,9 @@ export default function Singin() {
       component="main"
       maxWidth="xl"
       sx={{
-        bgcolor: "#e0e0e0",
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1496096265110-f83ad7f96608?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+
         height: "100vh",
         display: "flex",
         alignItems: "center",
@@ -169,11 +171,6 @@ export default function Singin() {
                   Sign in
                 </Button>
                 <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
                   <Grid item>
                     <Link href="Sing-up" variant="body2">
                       {"Don't have an account? Sign Up"}
