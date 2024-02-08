@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AppleCard from "../utils/AppleCard";
+import AppleCard from "Pages/AppleCard";
 import { Grid, Container, Typography } from "@mui/material";
 
 function AppleNews() {
@@ -22,7 +22,6 @@ function AppleNews() {
       <Container
         maxWidth="xl"
         sx={{
-          bgcolor: "#e0e0e0",
           padding: "10px",
           marginBottom: "20px",
         }}
