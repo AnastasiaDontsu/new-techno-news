@@ -1,12 +1,12 @@
 import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
 
 import React from "react";
-import Chart from "Pages/Chart";
-import PieChart from "Pages/PieChart";
-import Gauge from "../Pages/Gauge";
-import CustomAccordion from "../Pages/CustomAccordion";
+import Chart from "utils/Chart";
+import PieChart from "utils/PieChart";
+import Gauge from "utils/Gauge";
+import CustomAccordion from "utils/CustomAccordion";
 import { Container, Stack } from "@mui/system";
-
+import { Link } from "react-router-dom";
 export default function Statistics() {
   return (
     <Container
