@@ -1,7 +1,7 @@
 import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import Chart from "Pages/Chart";
-import PieChart from "../Pages/PieChart";
+import PieChart from "../utils/PieChart";
 import { Container, Stack } from "@mui/system";
 
 export default function Feeds() {
