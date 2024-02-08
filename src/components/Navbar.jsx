@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../Image/Fauget.png";
 const pages = ["Statistics", "User", "Bitcoin News", "Apple news", "Home"];
-const settings = ["Sing-up", "Sing-in", "loginButton"];
+const settings = ["Sing-up", "Sing-in"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
