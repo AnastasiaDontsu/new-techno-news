@@ -117,7 +117,8 @@ const Singup = () => {
       <Container
         maxWidth="xl"
         sx={{
-          bgcolor: "#f5f5f5",
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1550353127-b0da3aeaa0ca?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
           height: "100vh",
           display: "flex",
           alignItems: "center",
