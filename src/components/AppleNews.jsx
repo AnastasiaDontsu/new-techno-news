@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AppleCard from "../utils/AppleCard";
+import AppleCard from "Pages/AppleCard";
 import { Grid, Container, Typography } from "@mui/material";
 
 function AppleNews() {
