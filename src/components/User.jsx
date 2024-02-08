@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import DataTable from "../utils/DataTable";
+import DataTable from "Pages/DataTable";
 
 export default function User() {
   const [user, setUser] = useState([]);
