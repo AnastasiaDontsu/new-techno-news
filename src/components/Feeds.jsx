@@ -3,11 +3,16 @@ import React from "react";
 import Chart from "Pages/Chart";
 import PieChart from "../utils/PieChart";
 import { Container, Stack } from "@mui/system";
-import { ReactDOM } from "react";
 
 export default function Feeds() {
   return (
-    <Container maxWidth="xl">
+    <Container
+      maxWidth="xl"
+      sx={{
+        bgcolor: "#e0e0e0",
+        height: "100vh",
+      }}
+    >
       <Box display={"flex"}>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Grid container spacing={4}>
