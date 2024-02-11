@@ -13,7 +13,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../Image/Fauget.png";
-import { ReactDOM } from "react";
 const pages = ["Statistics", "User", "Bitcoin News", "Apple news", "Home"];
 const settings = ["Sing-up", "Sing-in"];
 
