@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Navbar from "components/Navbar";
 import Singup from "components/Singup";
 import Singin from "components/Singin";
@@ -8,7 +9,6 @@ import User from "components/User";
 import Statistics from "components/Statistics";
 import BitcoinNews from "components/BitcoinNews";
 import AppleNews from "components/AppleNews";
-import Coments from "components/Coments";
 import Home from "components/Home";
 
 const App = () => {
@@ -23,9 +23,13 @@ const App = () => {
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/Bitcoin News" element={<BitcoinNews />} />
         <Route path="/Apple news" element={<AppleNews />} />
-        <Route path="/Coments" element={<Coments />} />
       </Routes>
       <Footer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+      />{" "}
     </div>
   );
 };
