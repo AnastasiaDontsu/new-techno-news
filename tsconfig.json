@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "ESNext",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "react"
+  },
+  "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.png", "src/**/*.jpg"]
+}
