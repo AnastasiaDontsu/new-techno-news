@@ -12,9 +12,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-//import logo from "../Image/Fauget.png";
+import logo from "../Image/logo.png";
 
-const pages = ["Statistics", "Bitcoin News", "Apple news", "Home"];
+const pages = [
+  "Statistics",
+  "Bitcoin News",
+  "Apple news",
+  "New published",
+  "Home",
+];
 const settings = ["Sing-up", "Sing-in"];
 
 function Navbar() {
@@ -40,7 +46,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#212121" }}>
+    <AppBar position="static" sx={{ backgroundColor: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -92,7 +98,7 @@ function Navbar() {
             </Menu>
           </Box>
           <Toolbar>
-            {/* <img src={logo} alt="logo" style={{ width: "50px" }} /> */}
+            <img src={logo} alt="logo" style={{ width: "50px" }} />
           </Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -111,7 +117,10 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Travis Howard"
+                  src="https://cdn-icons-png.freepik.com/512/8792/8792047.png"
+                />
               </IconButton>
             </Tooltip>
             <Menu
