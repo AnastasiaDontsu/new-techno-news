@@ -117,11 +117,11 @@ export default function Home() {
               </StyledBox>
               <StyledBox
                 sx={{
-                  backgroundImage: `url("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+                  backgroundImage: `url("https://pbs.twimg.com/card_img/1763331422662643712/lUfJOfsQ?format=jpg&name=medium")`,
                 }}
               >
                 <StyledTypography align="center" variant="h3">
-                  <StyledLink to="/User">User</StyledLink>
+                  <StyledLink to="/New published">New article</StyledLink>
                 </StyledTypography>
               </StyledBox>
             </Stack>
