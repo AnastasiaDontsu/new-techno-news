@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
-import AppleCard from "Pages/AppleCard";
+import Published from "../Pages/Published";
 import { Grid, Container, Typography } from "@mui/material";
 
-function AppleNews() {
-  const [news, setNews] = useState([]);
+interface NewPublishedProps {
+  title: string;
+  urlToImage: string;
+  url: string;
+}
+
+function NewPublished() {
+  const [news, setNews] = useState<NewPublishedProps[]>([]);
 
   const getNews = () => {
     fetch(
-      `https://newsapi.org/v2/everything?q=apple&from=2024-01-18&to=2024-01-18&sortBy=popularity&apiKey=d663e9163be646dca11260deb7743314`
+      `https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=9acbff4c96d64f10981243ce862345b3`
     )
       .then((res) => res.json())
-      .then((json) => setNews(json.articles.slice(2, 14)));
+      .then((json) => setNews(json.articles.slice(0, 12)));
   };
 
   useEffect(() => {
@@ -22,7 +28,6 @@ function AppleNews() {
       <Container
         maxWidth="xl"
         sx={{
-          bgcolor: "#e0e0e0",
           padding: "10px",
           marginBottom: "20px",
         }}
@@ -36,19 +41,19 @@ function AppleNews() {
             padding: "10px",
           }}
         >
-          Сurrent news about Apple
+          All articles published by TechCrunch and The Next Web
         </Typography>
         <Grid
           container
           spacing={2}
           sx={{
-            padding: { xs: 2, sm: 3 },
+            padding: { xs: 2, sm: 3 }, // Adjust padding for different screen sizes
             marginBottom: "20px",
           }}
         >
-          {news.map((data) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} key={data.url}>
-              <AppleCard data={data} />
+          {news.map((data, i) => (
+            <Grid item xs={12} sm={6} md={4} lg={4} key={i}>
+              <Published data={data} />
             </Grid>
           ))}
         </Grid>
@@ -57,4 +62,4 @@ function AppleNews() {
   );
 }
 
-export default AppleNews;
+export default NewPublished;

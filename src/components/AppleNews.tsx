@@ -13,17 +13,10 @@ function AppleNews() {
 
   const getNews = () => {
     fetch(
-      `https://newsapi.org/v2/everything?q=apple&from=2024-01-18&to=2024-01-18&sortBy=popularity&apiKey=d663e9163be646dca11260deb7743314`
+      `https://newsapi.org/v2/everything?q=apple&from=2024-03-01&to=2024-03-01&sortBy=popularity&apiKey=9acbff4c96d64f10981243ce862345b3`
     )
       .then((res) => res.json())
-      .then((json) => {
-        if (json.articles) {
-          setNews(json.articles.slice(0, -5));
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching news:", error);
-      });
+      .then((json) => setNews(json.articles.slice(3, 15)));
   };
 
   useEffect(() => {
@@ -48,7 +41,7 @@ function AppleNews() {
             padding: "10px",
           }}
         >
-          Current news about Bitcoin
+          Current news about Apple
         </Typography>
         <Grid
           container

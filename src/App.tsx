@@ -8,20 +8,24 @@ import Footer from "./components/Footer";
 import Statistics from "./components/Statistics";
 import BitcoinNews from "./components/BitcoinNews";
 import AppleNews from "./components/AppleNews";
+import NewPublished from "./components/NewPublished";
 import Home from "./components/Home";
+
+import { useWillChange } from "framer-motion";
 
 const App = () => {
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/Sing-up" element={<Singup />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Sing-in" element={<Singin />} />
-
-        <Route path="/statistics" element={<Statistics />} />
-        <Route path="/Bitcoin News" element={<BitcoinNews />} />
-        <Route path="/Apple news" element={<AppleNews />} />
+        <Route path="Sing-up" element={<Singup />} />
+        <Route index element={<Home />} />
+        <Route path="Home" element={<Home />} />
+        <Route path="Sing-in" element={<Singin />} />
+        <Route path="statistics" element={<Statistics />} />
+        <Route path="New published" element={<NewPublished />} />
+        <Route path="Bitcoin News" element={<BitcoinNews />} />
+        <Route path="Apple news" element={<AppleNews />} />
       </Routes>
       <Footer />
       <ToastContainer

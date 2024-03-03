@@ -3,7 +3,15 @@ import { Box, CardMedia, CardContent } from "@mui/material";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 
-export default function AppleCard({ data }) {
+interface PublishedProps {
+  data: {
+    title: string;
+    urlToImage: string;
+    url: string;
+  };
+}
+
+const Published: React.FC<PublishedProps> = ({ data }) => {
   console.log(data);
 
   return (
@@ -18,4 +26,6 @@ export default function AppleCard({ data }) {
       </Box>
     </>
   );
-}
+};
+
+export default Published;
