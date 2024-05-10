@@ -25,39 +25,20 @@ function NewPublished() {
 
   return (
     <div>
-      <Container
-        maxWidth="xl"
+      <Grid
+        container
+        spacing={2}
         sx={{
-          padding: "10px",
-          marginBottom: "20px",
+          padding: { xs: 5, sm: 20 },
+          marginBottom: "10px",
         }}
       >
-        <Typography
-          variant="h5"
-          component="div"
-          sx={{
-            textAlign: "center",
-            fontFamily: "'Playfair Display SC', serif",
-            padding: "10px",
-          }}
-        >
-          All articles published by TechCrunch and The Next Web
-        </Typography>
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            padding: { xs: 2, sm: 3 }, // Adjust padding for different screen sizes
-            marginBottom: "20px",
-          }}
-        >
-          {news.map((data, i) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} key={i}>
-              <Published data={data} />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+        {news.map((data, i) => (
+          <Grid item xs={12} sm={6} md={4} lg={4} key={i}>
+            <Published data={data} />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 }
