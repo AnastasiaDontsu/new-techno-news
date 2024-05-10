@@ -16,8 +16,8 @@ import logo from "../Image/logo.png";
 
 const pages = [
   "Statistics",
-  "Bitcoin News",
-  "Apple news",
+  "BitcoinNews",
+  "AppleNews",
   "New published",
   "Home",
 ];
@@ -46,7 +46,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "black" }}>
+    <AppBar position="fixed" sx={{ backgroundColor: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -122,6 +122,10 @@ function Navbar() {
                   src="https://cdn-icons-png.freepik.com/512/8792/8792047.png"
                 />
               </IconButton>
+
+              {/* if (localStorage.getItem("token") === None) {
+
+} */}
             </Tooltip>
             <Menu
               sx={{ mt: "45px" }}
