@@ -39,23 +39,13 @@ export default function Home() {
   return (
     <Container maxWidth="xl">
       <Box>
-        <motion.div
-          className="animatable"
-          whileHover={{
-            scale: 1.2,
-            transition: { duration: 0.3, ease: "easeInOut" }, // Add transition property
-          }}
-          whileTap={{ scale: 0.9 }}
+        <Typography
+          align="center"
+          variant="h3"
+          sx={{ padding: "4%", marginTop: "5%" }}
         >
-          <Typography
-            align="center"
-            variant="h2"
-            sx={{ fontWeight: 900 }}
-            m={2}
-          >
-            Techno<b style={{ color: "red" }}>blog</b>
-          </Typography>
-        </motion.div>
+          Techno<span style={{ color: "red" }}>blog</span>
+        </Typography>
         <Box
           sx={{
             backgroundImage: `url("https://images.unsplash.com/photo-1535378620166-273708d44e4c?q=80&w=2157&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
@@ -94,7 +84,7 @@ export default function Home() {
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={{ xs: 1, sm: 2, md: 4 }}
-              m={6}
+              mt={6}
             >
               <StyledBox
                 sx={{
@@ -102,7 +92,7 @@ export default function Home() {
                 }}
               >
                 <StyledTypography align="center" variant="h3">
-                  <StyledLink to="/Bitcoin News">Bitcoin</StyledLink>
+                  <StyledLink to="/BitcoinNews">Bitcoin</StyledLink>
                 </StyledTypography>
               </StyledBox>
 
@@ -112,12 +102,12 @@ export default function Home() {
                 }}
               >
                 <StyledTypography align="center" variant="h3">
-                  <StyledLink to="/Apple news">Apple</StyledLink>
+                  <StyledLink to="/AppleNews">Apple</StyledLink>
                 </StyledTypography>
               </StyledBox>
               <StyledBox
                 sx={{
-                  backgroundImage: `url("https://pbs.twimg.com/card_img/1763331422662643712/lUfJOfsQ?format=jpg&name=medium")`,
+                  backgroundImage: `url("https://headerbidding.co/wp-content/uploads/2019/10/Becoming-TechCrunch.webp")`,
                 }}
               >
                 <StyledTypography align="center" variant="h3">
