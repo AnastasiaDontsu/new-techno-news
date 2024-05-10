@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BitcoinCard from "../Pages/BitcoinCard";
-import { Grid, Container, Typography } from "@mui/material";
+import { Grid, Container, Typography, Card } from "@mui/material";
 
 interface BitcoinNewsProps {
   title: string;
@@ -25,30 +25,13 @@ function BitcoinNews() {
 
   return (
     <div>
-      <Container
-        maxWidth="xl"
-        sx={{
-          padding: "10px",
-          marginBottom: "20px",
-        }}
-      >
-        <Typography
-          variant="h5"
-          component="div"
-          sx={{
-            textAlign: "center",
-            fontFamily: "'Playfair Display SC', serif",
-            padding: "10px",
-          }}
-        >
-          Current news about Bitcoin
-        </Typography>
+      <Card>
         <Grid
           container
           spacing={2}
           sx={{
-            padding: { xs: 2, sm: 3 }, // Adjust padding for different screen sizes
-            marginBottom: "20px",
+            padding: { xs: 5, sm: 20 },
+            marginBottom: "10px",
           }}
         >
           {news.map((data, i) => (
@@ -57,7 +40,9 @@ function BitcoinNews() {
             </Grid>
           ))}
         </Grid>
-      </Container>
+      </Card>
     </div>
   );
 }
+
+export default BitcoinNews;
