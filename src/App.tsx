@@ -24,8 +24,8 @@ const App = () => {
         <Route path="Sing-in" element={<Singin />} />
         <Route path="statistics" element={<Statistics />} />
         <Route path="New published" element={<NewPublished />} />
-        <Route path="Bitcoin News" element={<BitcoinNews />} />
-        <Route path="Apple news" element={<AppleNews />} />
+        <Route path="BitcoinNews" element={<BitcoinNews />} />
+        <Route path="AppleNews" element={<AppleNews />} />
       </Routes>
       <Footer />
       <ToastContainer
