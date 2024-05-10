@@ -61,5 +61,3 @@ function BitcoinNews() {
     </div>
   );
 }
-
-export default BitcoinNews;
