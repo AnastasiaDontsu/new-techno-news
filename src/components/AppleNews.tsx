@@ -29,7 +29,7 @@ function AppleNews() {
   }, [name]);
 
   return (
-    <div>
+    <div style={{ marginTop: "70px" }}>
       <div>Hello, {showGreeting ? name : ""}</div>
       <button onClick={handleClick}>Click me!</button>
       <hr></hr>
