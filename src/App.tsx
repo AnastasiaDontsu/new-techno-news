@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Navbar from "./components/Navbar";
 import Singup from "./components/Singup";
 import Singin from "./components/Singin";
+import Logout from "./components/Logout";
 import Footer from "./components/Footer";
 import Statistics from "./components/Statistics";
 import BitcoinNews from "./components/BitcoinNews";
@@ -19,11 +20,12 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="Sing-up" element={<Singup />} />
+        <Route path="Log-out" element={<Logout />} />
         <Route index element={<Home />} />
         <Route path="Home" element={<Home />} />
         <Route path="Sing-in" element={<Singin />} />
         <Route path="statistics" element={<Statistics />} />
-        <Route path="New published" element={<NewPublished />} />
+        <Route path="Newpublished" element={<NewPublished />} />
         <Route path="BitcoinNews" element={<BitcoinNews />} />
         <Route path="AppleNews" element={<AppleNews />} />
       </Routes>
