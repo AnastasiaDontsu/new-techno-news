@@ -3,8 +3,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   Button,
-  Card,
-  CardContent,
   Typography,
   Grid,
   TextField,
@@ -12,9 +10,7 @@ import {
   InputAdornment,
   Box,
   Link,
-  Paper,
   Container,
-  Stack,
 } from "@mui/material";
 
 import Visibility from "@mui/icons-material/Visibility";
@@ -23,9 +19,13 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { useNavigate } from "react-router-dom";
-import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
+
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { auth } from "../firebase";
+
+import { signOut } from "firebase/auth";
+
 interface ImageFile extends File {
   readonly preview: string;
 }
@@ -70,6 +70,7 @@ const Singup = () => {
     }
     return isproceed;
   };
+  const defaultTheme = createTheme();
 
   const navigate = useNavigate();
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -90,6 +91,19 @@ const Singup = () => {
           toast.error("Failed to register: " + error.message);
         });
     }
+  };
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        toast.success("Logout successful");
+        navigate("/Sing-in"); // Redirect to login page or home page after logout
+      })
+      .catch((error) => {
+        // An error happened.
+        toast.error("Failed to logout: " + error.message);
+      });
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -123,139 +137,37 @@ const Singup = () => {
   };
 
   return (
-    <>
-      <Container
-        component="main"
-        maxWidth="xl"
-        sx={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1496096265110-f83ad7f96608?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          display="flex"
-          justifyContent={"senter"}
-          flexDirection={"column"}
-          maxWidth={500}
-          alignItems="senter"
-          borderRadius={5}
-          padding={2}
-          boxShadow={"5px 5px 10px #ccc"}
+    <ThemeProvider theme={defaultTheme}>
+      <Box>
+        <Container
+          component="main"
+          maxWidth="sm"
           sx={{
-            backgroundColor: "#ffffff",
-            ":hover": {
-              boxShadow: "10px 10px 10px #ccc",
-            },
+            marginTop: 10,
+            marginBottom: 30,
+            paddingTop: 4,
+            paddingBottom: 4,
           }}
         >
-          <Typography
+          <Box
             sx={{
-              fontSize: 20,
-              textAlign: "center",
-              padding: "10px",
-              fontFamily: "'Playfair Display SC', serif",
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            Registration
-          </Typography>
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={4}>
-              <Grid xs={12} sm={6} item>
-                <TextField
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  label="Name"
-                  variant="outlined"
-                  id="name"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <AccountCircleIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{ display: "block" }}
-                />
-              </Grid>
-              <Grid xs={12} sm={6} item>
-                <TextField
-                  value={lastname}
-                  onChange={(e) => setLastname(e.target.value)}
-                  label="Last name"
-                  variant="outlined"
-                  id="lastname"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <AccountBoxIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
-              <Grid xs={12} sm={6} item>
-                <TextField
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  label="Email"
-                  variant="outlined"
-                  id="email"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <EmailIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
-              <Grid xs={12} sm={6} item>
-                <TextField
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  label="Password"
-                  variant="outlined"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
-              <Grid xs={12} md={6} item>
-                <TextField
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  label="Phone"
-                  variant="outlined"
-                  id="phone"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <PhoneEnabledIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
+            <Typography component="h1" variant="h5">
+              Sing up
+            </Typography>
+            <form onSubmit={handleSubmit}>
               <Box
                 onClick={handleImageClick}
                 sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+
                   borderRadius: "5%",
                   cursor: "pointer",
                   overflow: "hidden",
@@ -266,7 +178,7 @@ const Singup = () => {
                     src={URL.createObjectURL(image)}
                     alt="Remy"
                     style={{
-                      width: "200px",
+                      width: "250px",
                       height: "112.5px",
                       objectFit: "contain",
                       objectPosition: "center top",
@@ -292,29 +204,114 @@ const Singup = () => {
                 ></input>
               </Box>
 
-              <Grid
-                xs={12}
-                item
-                sx={{ textAlign: "center", marginTop: "-50px" }}
-              >
-                <Button
-                  sx={{ backgroundColor: "success.main" }}
-                  type="submit"
-                  variant="contained"
-                >
-                  Sign-up
-                </Button>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    label="Name"
+                    variant="outlined"
+                    id="name"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <AccountCircleIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={{ display: "block" }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                    label="Last name"
+                    variant="outlined"
+                    id="lastname"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <AccountBoxIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    label="Email"
+                    variant="outlined"
+                    id="email"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <EmailIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    label="Password"
+                    variant="outlined"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop: 3,
+                      marginBottom: 2,
+                    }}
+                  >
+                    <Button type="submit" variant="contained" sx={{ mr: 2 }}>
+                      Sign up
+                    </Button>
+                    <Button
+                      onClick={handleLogout}
+                      variant="contained"
+                      color="secondary"
+                    >
+                      Logout
+                    </Button>
+                  </Box>
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid sx={{ textAlign: "center", padding: "15px" }} item>
-              <Link href="Sing-in" variant="body2">
-                {"Don't have an account? Sing in"}
-              </Link>
-            </Grid>
-          </form>
-        </Box>
-      </Container>
-    </>
+
+              <Grid sx={{ textAlign: "center", padding: "15px" }} item>
+                <Link href="Sing-in" variant="body2">
+                  {"Don't have an account? Sing in"}
+                </Link>
+              </Grid>
+            </form>
+          </Box>
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 };
 

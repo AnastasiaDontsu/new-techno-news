@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import Coments from "../components/Coments";
 import { motion } from "framer-motion";
+import "../styles/Home.css";
 
 const StyledLink = styled(Link)({
   color: "black", // Set color to black
@@ -39,13 +40,6 @@ export default function Home() {
   return (
     <Container maxWidth="xl">
       <Box>
-        <Typography
-          align="center"
-          variant="h3"
-          sx={{ padding: "4%", marginTop: "5%" }}
-        >
-          Techno<span style={{ color: "red" }}>blog</span>
-        </Typography>
         <Box
           sx={{
             backgroundImage: `url("https://images.unsplash.com/photo-1535378620166-273708d44e4c?q=80&w=2157&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
@@ -58,6 +52,7 @@ export default function Home() {
             width: "100%",
             display: "flex",
             justifyContent: "center",
+            marginTop: "6em",
           }}
         >
           <Box
@@ -118,23 +113,9 @@ export default function Home() {
           </Box>
         </Box>
         <Box>
-          <motion.div
-            className="animatable"
-            whileHover={{
-              scale: 1.2,
-              transition: { duration: 0.3, ease: "easeInOut" }, // Add transition property
-            }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Typography
-              align="center"
-              variant="h2"
-              sx={{ fontWeight: 900 }}
-              m={2}
-            >
-              comments for <b style={{ color: "red" }}>you</b>
-            </Typography>
-          </motion.div>
+          <Typography className="red-text">
+            comments for <b style={{ color: "red" }}>you</b>
+          </Typography>
         </Box>
         <Box>
           <Stack spacing={2}>
